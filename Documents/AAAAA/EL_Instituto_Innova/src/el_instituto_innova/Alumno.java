@@ -73,5 +73,21 @@ public class Alumno {
         this.pensionFinal = pensionFinal;
     }
     
-    
+    private void calcularPensionFinal() {
+        if (this.tipoBeca != null) {
+            if (this.tipoBeca.equalsIgnoreCase("Total")) {
+                this.pensionFinal = 0;
+            } else if (this.tipoBeca.equalsIgnoreCase("Parcial")) {
+                this.pensionFinal = this.pensionBase * 0.50; // 50% de descuento
+            } else {
+                this.pensionFinal = this.pensionBase; // Sin beca
+            }
+        }
+        
+    }
+     public void verDatos() {
+        System.out.println("NOMBRE: " + this.nombre + " | DOC: " + this.tipoDocumento + 
+                " (" + this.numeroDocumento + ") | NIVEL: " + this.nivelSocioeconomico + 
+                " | BECA: " + this.tipoBeca + " | PENSION A PAGAR: S/ " + this.pensionFinal);
+    }
 }
